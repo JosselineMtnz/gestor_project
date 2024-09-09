@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./login.module.css";
 
@@ -9,6 +9,14 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
+  const [userRole, setUserRole] = useState(null);
+
+  useEffect(() => {
+    const storedUserRole = localStorage.getItem("userRole");
+    if (storedUserRole) {
+      setUserRole(storedUserRole);
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,16 +33,21 @@ export default function Login() {
       if (response.ok) {
         const data = await response.json();
 
-        // Redirecting based on user role
         switch (data.role) {
           case "admin":
             router.push("../roles/admin");
+            setUserRole(data.role);
+            localStorage.setItem("userRole", data.role);
             break;
           case "gerente":
             router.push("../roles/gerente");
+            setUserRole(data.role);
+            localStorage.setItem("userRole", data.role);
             break;
           case "usuario":
             router.push("../roles/usuario");
+            setUserRole(data.role);
+            localStorage.setItem("userRole", data.role);
             break;
           default:
             setError("Rol de usuario no reconocido");
