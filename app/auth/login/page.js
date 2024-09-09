@@ -25,7 +25,7 @@ export default function Login() {
       if (response.ok) {
         const data = await response.json();
 
-        // Redirigir a diferentes páginas según el rol del usuario
+        // Redirecting based on user role
         switch (data.role) {
           case "admin":
             router.push("../roles/admin");
@@ -36,6 +36,8 @@ export default function Login() {
           case "usuario":
             router.push("../roles/usuario");
             break;
+          default:
+            setError("Rol de usuario no reconocido");
         }
       } else {
         const data = await response.json();

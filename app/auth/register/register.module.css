@@ -1,4 +1,4 @@
-.loginContainer {
+.registerContainer {
   max-width: 400px;
   margin: 0 auto;
   padding: 2rem;
@@ -7,13 +7,15 @@
   background-color: #f9f9f9;
 }
 
-.loginForm {
+.registerForm {
   display: flex;
   flex-direction: column;
 }
 
 .user,
-.pass {
+.pass,
+.email,
+.name {
   margin-bottom: 1rem;
   padding: 0.5rem;
   font-size: 1rem;
@@ -21,7 +23,7 @@
   border-radius: 4px;
 }
 
-.ingresar {
+.registrar {
   padding: 0.7rem;
   background-color: #0070f3;
   color: white;
@@ -30,19 +32,6 @@
   cursor: pointer;
 }
 
-.ingresar:hover {
+.registrar:hover {
   background-color: #005bb5;
-}
-
-.registerLink:hover {
-  color: #0070f3;
-}
-
-.restablecerLink:hover {
-  color: #0070f3;
-}
-
-.error {
-  color: red;
-  margin-top: 1rem;
 }
