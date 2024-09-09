@@ -8,11 +8,6 @@
   background-color: #f9f9f9;
 }
 
-.logo {
-  max-width: 150px;
-  margin-bottom: 1rem;
-}
-
 .loginForm {
   display: flex;
   flex-direction: column;
@@ -41,6 +36,10 @@
 }
 
 .registerLink:hover {
+  color: #0070f3;
+}
+
+.restablecerLink:hover {
   color: #0070f3;
 }
 

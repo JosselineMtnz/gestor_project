@@ -1,7 +1,7 @@
 function AdminPage() {
   return (
     <div>
-      <h1>REGISTRAR NUEVO USUARIO</h1>
+      <h1>Bienvenido Usuario</h1>
     </div>
   );
 }

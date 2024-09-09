@@ -14,7 +14,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch("/api/control", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,14 +23,26 @@ export default function Login() {
       });
 
       if (response.ok) {
-        // Si el login es exitoso, redirige a la página de dashboard
-        router.push("/dashboard");
+        const data = await response.json();
+
+        // Redirigir a diferentes páginas según el rol del usuario
+        switch (data.role) {
+          case "admin":
+            router.push("../roles/admin");
+            break;
+          case "gerente":
+            router.push("../roles/gerente");
+            break;
+          case "usuario":
+            router.push("../roles/usuario");
+            break;
+        }
       } else {
         const data = await response.json();
         setError(data.message);
       }
     } catch (error) {
-      setError("Error de servidor. Inténtelo de nuevo más tarde.");
+      setError("Error de servidor. Intente de nuevo.");
     }
   };
 
@@ -60,10 +72,18 @@ export default function Login() {
       </form>
       {error && <p className={styles.error}>{error}</p>}
 
-      {/* Opción de registro */}
+      {/* Restablecer contraseña */}
+      <p className={styles.restablecerPrompt}>
+        ¿No recuerdas tu contraseña?{" "}
+        <a href="/auth/restablecer" className={styles.restablecerLink}>
+          Cambiala acá
+        </a>
+      </p>
+
+      {/* Opción de crear usuario */}
       <p className={styles.registerPrompt}>
         ¿No tienes usuario?{" "}
-        <a href="/auth/register/page.js" className={styles.registerLink}>
+        <a href="/auth/register" className={styles.registerLink}>
           Regístrate acá
         </a>
       </p>
