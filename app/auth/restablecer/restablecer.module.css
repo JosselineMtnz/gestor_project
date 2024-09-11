@@ -1,3 +1,10 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
 .restablecerContainer {
   max-width: 400px;
   margin: 0 auto;
@@ -12,7 +19,8 @@
   flex-direction: column;
 }
 
-.pass {
+.pass,
+.email {
   margin-bottom: 1rem;
   padding: 0.5rem;
   font-size: 1rem;

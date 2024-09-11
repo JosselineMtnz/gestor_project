@@ -1,32 +1,54 @@
-// app/api/control/route.js
+import mysql from "mysql2/promise";
+import { NextResponse } from "next/server";
+
 export async function POST(req) {
   try {
     const { user, password } = await req.json();
 
-    const users = {
-      admin: { password: "admin123", role: "admin" },
-      gerente: { password: "gerente123", role: "gerente" },
-      usuario: { password: "usuario123", role: "usuario" },
-    };
+    const connection = await mysql.createConnection({
+      host: "localhost",
+      port: 3306,
+      user: "root",
+      password: "",
+      database: "gestor_project",
+    });
 
-    console.log("Datos recibidos:", user, password);
+    const [rows] = await connection.query(
+      "SELECT * FROM users WHERE user = ?",
+      [user]
+    );
 
-    if (users[user] && users[user].password === password) {
-      const role = users[user].role;
-      return new Response(
-        JSON.stringify({ message: "Inicio de sesión exitoso.", role }),
-        { status: 200 }
-      );
+    //console.log("Query results:", rows);
+
+    if (rows.length > 0) {
+      const storedPassword = rows[0].password;
+      const role = rows[0].role;
+
+      console.log("Contraseña de la BD:", storedPassword);
+      console.log("Contraseña proporcionada por el usuario:", password);
+
+      if (password === storedPassword) {
+        return NextResponse.json(
+          { message: "Inicio de sesión exitoso.", role },
+          { status: 200 }
+        );
+      } else {
+        return NextResponse.json(
+          { message: "Credenciales inválidas." },
+          { status: 401 }
+        );
+      }
     } else {
-      return new Response(
-        JSON.stringify({ message: "Credenciales inválidas." }),
+      return NextResponse.json(
+        { message: "Credenciales inválidas." },
         { status: 401 }
       );
     }
   } catch (error) {
     console.error("Error en el controlador de API:", error);
-    return new Response(JSON.stringify({ message: "Error del servidor." }), {
-      status: 500,
-    });
+    return NextResponse.json(
+      { message: "Error del servidor." },
+      { status: 500 }
+    );
   }
 }
