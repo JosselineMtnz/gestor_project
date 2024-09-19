@@ -1,4 +1,4 @@
-import mysql from "mysql2/promise";
+import conexion from "../../conexion/db";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -6,15 +6,7 @@ export async function POST(req) {
     try {
       const { name, user, password, email } = await req.json();
 
-      const connection = await mysql.createConnection({
-        host: "localhost",
-        port: 3306,
-        user: "root",
-        password: "",
-        database: "gestor_project",
-      });
-
-      const [result] = await connection.query(
+      const [result] = await conexion.query(
         "INSERT INTO users (name, user, password, email) VALUES (?, ?, ?, ?)",
         [name, user, password, email]
       );

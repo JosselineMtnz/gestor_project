@@ -1,22 +1,13 @@
-import mysql from "mysql2/promise";
+import conexion from "../../conexion/db";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
     const { user, password } = await req.json();
 
-    const connection = await mysql.createConnection({
-      host: "localhost",
-      port: 3306,
-      user: "root",
-      password: "",
-      database: "gestor_project",
-    });
-
-    const [rows] = await connection.query(
-      "SELECT * FROM users WHERE user = ?",
-      [user]
-    );
+    const [rows] = await conexion.query("SELECT * FROM users WHERE user = ?", [
+      user,
+    ]);
 
     //console.log("Query results:", rows);
 

@@ -66,6 +66,7 @@ export default function Login() {
           </button>
         </form>
         {error && <p className={styles.error}>{error}</p>}
+
         {/* Restablecer contraseña */}
         <p className={styles.restablecerPrompt}>
           ¿No recuerdas tu contraseña?{" "}
