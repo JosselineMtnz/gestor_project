@@ -50,6 +50,16 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link href="#">
+                <p>Crear proyecto</p>
+              </Link>
+            </li>
+            <li>
+              <Link href="#">
+                <p>Crear tarea</p>
+              </Link>
+            </li>
+            <li>
               <button onClick={handleLogout}>Cerrar sesión</button>
             </li>
           </>
@@ -64,6 +74,11 @@ const Navbar = () => {
             <li>
               <Link href="#">
                 <p>Ver proyectos</p>
+              </Link>
+            </li>
+            <li>
+              <Link href="#">
+                <p>Crear tarea</p>
               </Link>
             </li>
             <li>
