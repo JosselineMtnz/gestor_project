@@ -1,0 +1,56 @@
+.formulario {
+  max-width: 50%; /* Ajusta el ancho máximo según tus necesidades */
+  margin: 0 auto; /* Centra el contenedor */
+  padding: 20px; /* Espaciado interno */
+  background-color: #f9f9f9; /* Color de fondo */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.title {
+  text-align: center; /* Centra el título */
+  color: #333; /* Color del texto */
+}
+
+.form {
+  display: flex;
+  flex-direction: column; /* Organiza los elementos en columna */
+}
+
+.formGroup {
+  margin-bottom: 15px; /* Espaciado entre grupos */
+}
+
+.label {
+  margin-bottom: 5px; /* Espaciado entre la etiqueta y el campo */
+  font-weight: bold; /* Negrita para las etiquetas */
+}
+
+.input,
+.textarea,
+.select {
+  padding: 10px; /* Espaciado interno en los campos */
+  border: 1px solid #ccc; /* Borde gris claro */
+  border-radius: 4px; /* Bordes redondeados */
+  width: 100%; /* Ancho completo */
+  box-sizing: border-box; /* Incluye padding en el ancho total */
+}
+
+.error {
+  color: red; /* Color de los mensajes de error */
+  font-size: 12px; /* Tamaño de fuente pequeño para errores */
+}
+
+.submitButton {
+  padding: 10px; /* Espaciado interno en el botón */
+  background-color: #007bff; /* Color de fondo azul */
+  color: white; /* Color del texto del botón */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  font-size: 16px; /* Tamaño de fuente del botón */
+}
+
+.submitButton:hover {
+  background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+}
