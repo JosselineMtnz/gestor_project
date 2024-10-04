@@ -1,0 +1,30 @@
+.title {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: first baseline;
+  height: 100vh;
+}
+
+.table   {
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.table td {
+  background-color: #53839238;
+}
+
+.table th {
+  background-color: #0070f3;
+  color: white;
+}

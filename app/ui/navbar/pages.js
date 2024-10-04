@@ -67,6 +67,11 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link href="#">
+                <p>Crear tarea</p>
+              </Link>
+            </li>
+            <li>
               <button onClick={handleLogout}>Cerrar sesión</button>
             </li>
           </>
