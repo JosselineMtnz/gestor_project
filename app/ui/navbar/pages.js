@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("userRole");
-    router.push("../auth/login");
+    router.push("../../auth/login");
   };
 
   return (
@@ -35,18 +35,18 @@ const Navbar = () => {
         {user && user.role === "admin" && (
           <>
             <li>
-              <Link href="/">
-                <p>Inicio</p>
+              <Link href="crearProyecto">
+                <p>Crear nuevo proyecto</p>
               </Link>
             </li>
             <li>
-              <Link href="#">
-                <p>Ver usuarios</p>
-              </Link>
-            </li>
-            <li>
-              <Link href="#">
+              <Link href="verProyectos">
                 <p>Ver proyectos</p>
+              </Link>
+            </li>
+            <li>
+              <Link href="verUsuarios">
+                <p>Ver usuarios</p>
               </Link>
             </li>
             <li>

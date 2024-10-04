@@ -1,0 +1,259 @@
+/* Estilo del formulario del proyecto */
+.proyect-form {
+    display: flex;
+    flex-direction: column; /* Alineación vertical de los elementos */
+    align-items: center; /* Centramos el formulario */
+    gap: 15px; /* Espacio entre los elementos */
+    max-width: 300px; /* Ancho máximo del formulario */
+    margin: 20px; /* Centrar el formulario en la página */
+    margin-left: 5%;
+    padding: 20px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde del formulario */
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: #f5f5f5; /* Color de fondo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+}
+
+/* Estilo de los inputs y textareas */
+.proyect-form input,
+.proyect-form textarea {
+    width: 100%; /* Que el input tome todo el ancho del formulario */
+    padding: 10px; /* Espaciado interno del input */
+    border: 1px solid #ccc; /* Borde de los inputs */
+    border-radius: 4px; /* Bordes redondeados de los inputs */
+    font-size: 14px; /* Tamaño de fuente */
+}
+
+/* Estilo para los botones dentro del formulario */
+.proyect-form button {
+    width: 100%; /* Que el botón también tome el 100% del ancho */
+    padding: 10px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    background-color: #4CAF50; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    cursor: pointer; /* Cambia el cursor cuando se pasa sobre el botón */
+    font-size: 14px; /* Tamaño de fuente */
+}
+
+/* Estilo cuando se pasa el cursor sobre el botón */
+.proyect-form button:hover {
+    background-color: #45a049; /* Cambia el color al pasar el cursor */
+}
+
+/* Estilo para los botones secundarios (como eliminar o editar) */
+.proyect-form button.secondary {
+    background-color: #ee1000; /* Botón rojo para eliminar o cancelar */
+}
+
+/* Tarjetas de proyecto */
+.proyect-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    margin-left: 5%;
+    background-color: #6cd4ca6c;
+    max-width: 400px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de la tarjeta */
+h3.h3proyect{
+    color: #014961;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 1px;
+}
+/* Título de la tarea */
+h3.h3task{
+    color: #000000;
+    font-size: 25px;
+    margin-left: 6%;
+}
+
+/* Línea divisora */
+hr{
+    border: none; 
+    border-top: 3px solid #1c6f72; 
+    margin: 20px 0;
+}
+
+/* Botones dentro de la tarjeta */
+.proyect-card .button-group {
+    display: flex;
+    justify-content: space-between; /* Espacio entre los botones */
+    width: 100%; /* Que ocupen el mismo ancho de la tarjeta */
+    margin-top: 10px;
+}
+
+.proyect-card button {
+    flex: 1; /* Que los botones ocupen el mismo espacio */
+    margin-right: 10px; /* Espacio entre botones */
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.proyect-card button:last-child {
+    margin-right: 0; /* El último botón no necesita margen derecho */
+}
+
+.proyect-card button:hover {
+    background-color: #45a049;
+}
+
+.proyect-card button.delete-button {
+    background-color: #f44336;
+}
+
+.proyect-card button.delete-button:hover {
+    background-color: #e41e1e;
+}
+
+.proyect-card button.edit-button {
+    background-color: #3649f4;
+}
+
+.button-group {
+    display: flex; /* Flexbox para alinear botones */
+    justify-content: space-between; /* Espacio entre botones */
+}
+
+.button-group button {
+    padding: 5px 10px; /* Espaciado interno de botones */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    background-color: #007BFF; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    cursor: pointer; /* Cambia el cursor al pasar */
+    font-size: 12px; /* Tamaño de fuente más pequeño */
+}
+
+.button-group button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el cursor */
+}
+
+/* Estilo botón */
+.BtnCrear {
+    padding: 10px 15px; /* Espaciado interno del botón */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    background-color: #0a9299; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    font-size: 20px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar */
+    transition: background-color 0.3s ease; /* Transición suave para el fondo */
+    margin-bottom: 20px; /* Espaciado inferior */
+    margin-left: 5%;
+}
+
+.BtnCrear:hover {
+    background-color: #15a7b4; /* Color de fondo al pasar el cursor */
+}
+
+.BtnCrear:focus {
+    outline: none; /* Sin borde de enfoque */
+}
+
+/* Estilo del formulario de tareas */
+.task-form {
+    display: flex;
+    flex-direction: column; /* Alinear los elementos en columna */
+    gap: 15px; /* Espacio entre los elementos */
+    width: 90%; /* El formulario ocupa todo el ancho */
+    max-width: 400px; /* Ancho máximo del formulario */
+    margin: 20px auto; /* Centrar el formulario */
+    padding: 20px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo de los inputs y textarea */
+.task-form input,
+.task-form textarea {
+    width: 90%; /* Los inputs y el textarea ocupan todo el ancho */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño de la fuente */
+    background-color: #fff; /* Fondo blanco */
+}
+
+/* Estilo del textarea */
+.task-form textarea {
+    min-height: 80px; /* Altura mínima para el textarea */
+    resize: vertical; /* Permitir cambiar el tamaño verticalmente */
+}
+
+/* Estilo del botón */
+.task-form button {
+    padding: 12px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #0999ac; /* Color verde del botón */
+    color: white; /* Texto blanco */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor al pasar por el botón */
+    transition: background-color 0.3s ease; /* Efecto de transición suave */
+}
+
+/* Efecto al pasar el cursor por el botón */
+.task-form button:hover {
+    background-color: #45a049; /* Color más oscuro */
+}
+
+.task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre elementos */
+    max-width: 400px; /* Ancho máximo del formulario */
+    margin: 10px auto; /* Centramos el formulario */
+    padding: 15px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde del formulario */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Color de fondo */
+  }
+  
+  .task {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .task hr {
+    margin: 10px 0; /* Espacio de la línea divisoria */
+  }
+  
+  .task button {
+    margin-right: 10px; /* Espacio entre botones */
+  }
+  
+  .task-card {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9; /* Color por defecto */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.task-card.completed {
+    background-color: #c8e6c9; /* Color verde para tareas completadas */
+    text-decoration: line-through; /* Tachado para texto completado */
+}
+.task-card.canceled {
+    background-color: rgba(255, 0, 0, 0.388); /* Color rojo más opaco */
+    text-decoration: line-through; /* Línea sobre el texto */
+}
+
+.task-buttons {
+    display: flex;
+    justify-content: space-between; /* Separar botones */
+    margin-top: 10px; /* Espacio entre la lista y los botones */
+}

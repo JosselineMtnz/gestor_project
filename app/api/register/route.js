@@ -1,25 +1,17 @@
-import mysql from "mysql2/promise";
 import { NextResponse } from "next/server";
+import conexion from "../../conexion/db";
 
 export async function POST(req) {
   if (req.method === "POST") {
     try {
       const { name, user, password, email } = await req.json();
 
-      const connection = await mysql.createConnection({
-        host: "localhost",
-        port: 3306,
-        user: "root",
-        password: "",
-        database: "gestor_project",
-      });
-
-      const [result] = await connection.query(
+      const [result] = await conexion.query(
         "INSERT INTO users (name, user, password, email) VALUES (?, ?, ?, ?)",
         [name, user, password, email]
       );
 
-      console.log("Query results:", result);
+      //console.log("Query results:", result);
 
       if (result.affectedRows > 0) {
         return NextResponse.json(

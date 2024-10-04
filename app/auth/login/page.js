@@ -30,7 +30,7 @@ export default function Login() {
         const data = await response.json();
         //console.log(data);
         localStorage.setItem("userRole", data.role);
-        router.push(`../roles/${data.role}`);
+        router.push(`../roles/${data.role}/verProyectos`);
       } else {
         const data = await response.json();
         setError(data.message);
