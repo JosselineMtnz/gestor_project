@@ -30,7 +30,11 @@ export default function Login() {
         const data = await response.json();
         //console.log(data);
         localStorage.setItem("userRole", data.role);
-        router.push(`../roles/${data.role}/verProyectos`);
+        if (data.role === "admin" || data.role === "gerente") {
+          router.push(`../roles/${data.role}/verProyectos`);
+        } else {
+          router.push(`../roles/usuario/verMisProyectos`);
+        }
       } else {
         const data = await response.json();
         setError(data.message);
