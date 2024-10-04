@@ -1,3 +1,4 @@
+// app/layout.js
 import "./globals.css";
 import Footer from "./ui/footer/pages";
 
