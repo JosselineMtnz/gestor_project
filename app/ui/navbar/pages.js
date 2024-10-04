@@ -13,7 +13,6 @@ const Navbar = () => {
 
   useEffect(() => {
     const storedUserRole = localStorage.getItem("userRole");
-    //console.log(storedUserRole);
     if (storedUserRole) {
       const user = {
         role: storedUserRole,
@@ -35,13 +34,13 @@ const Navbar = () => {
       <ul className={styles.navLinks}>
         {user && user.role === "admin" && (
           <>
-            {/*<li>
+            <li>
               <Link href="/">
                 <p>Inicio</p>
               </Link>
-            </li>*/}
+            </li>
             <li>
-              <Link href="../../roles/admin">
+              <Link href="#">
                 <p>Ver usuarios</p>
               </Link>
             </li>

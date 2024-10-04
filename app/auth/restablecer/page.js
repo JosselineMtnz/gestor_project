@@ -18,7 +18,7 @@ export default function Restablecer() {
     }
 
     try {
-      const response = await fetch("/api/control", {
+      const response = await fetch("/api/restablecer", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password, email }),
