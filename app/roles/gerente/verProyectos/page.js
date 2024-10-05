@@ -22,10 +22,10 @@ function VerProyectos() {
         }
 
         const data = await response.json();
+        console.log(data); // Verifica que el campo 'nombre_proyecto' esté presente
         setProjects(data);
       } catch (error) {
         console.error("Error fetching projects:", error);
-        // Puedes mostrar un mensaje de error al usuario si lo deseas
       }
     };
     fetchProjects();
@@ -37,7 +37,11 @@ function VerProyectos() {
 
   const columns = [
     { name: "ID", selector: (row) => row.id, sortable: true },
-    { name: "Nombre", selector: (row) => row.nombre_proyecto, sortable: true },
+    {
+      name: "Nombre",
+      selector: (row) => row.nombre_proyecto || "Nombre no disponible",
+      sortable: true,
+    },
     {
       name: "Fecha de Inicio",
       selector: (row) => new Date(row.fecha_inicio).toLocaleDateString("es-ES"), // Formato legible
@@ -56,7 +60,10 @@ function VerProyectos() {
         <div className={styles.options}>
           <button
             className={styles.viewButton}
-            onClick={() => handleViewDetails(row.id)}
+            onClick={() => {
+              console.log("Nombre del proyecto:", row.nombre_proyecto); // Verifica que el nombre del proyecto no sea undefined
+              handleViewDetails(row.id, row.nombre_proyecto);
+            }}
           >
             Ver Detalles
           </button>

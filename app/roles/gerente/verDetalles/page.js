@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation"; // Obtener parámetros de búsqueda
 import Navbar from "@/app/ui/navbar/pages";
+import Card from "@/app/ui/cards/page"; // Ajusta la ruta según la estructura de tu proyecto
 import styles from "./verDetalles.module.css"; // Archivo CSS como módulo
 
 function VerDetalles() {
@@ -10,31 +11,55 @@ function VerDetalles() {
   const [isEditing, setIsEditing] = useState(false); // Estado para habilitar el formulario de edición
   const [newState, setNewState] = useState(""); // Estado para el nuevo estado del proyecto
   const [newEndDate, setNewEndDate] = useState(""); // Estado para la nueva fecha final
+  const [tareas, setTareas] = useState([]);
   const searchParams = useSearchParams(); // Obtener los parámetros de la URL
-  const id = searchParams.get("id"); // Obtener el ID de la URL
+  const id = searchParams.get("id");
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      if (id) {
+    if (id) {
+      const fetchTareas = async () => {
+        try {
+          const response = await fetch(
+            `/api/control_gerente/buscarTareas?id=${id}`
+          );
+          const data = await response.json();
+          if (response.ok) {
+            setTareas(data); // Asigna las tareas obtenidas al estado
+          } else {
+            console.error("Error al obtener tareas:", data.message);
+          }
+        } catch (error) {
+          console.error("Error al obtener tareas:", error);
+        }
+      };
+
+      fetchTareas();
+    }
+  }, [id]); // Ejecuta el efecto solo si 'nombreProyecto' cambia
+
+  useEffect(() => {
+    if (id) {
+      const fetchProjects = async () => {
         try {
           const response = await fetch(
             `/api/control_gerente/verDetalles?id=${id}`
           );
-          if (!response.ok) {
-            throw new Error("Error al obtener el proyecto");
-          }
           const data = await response.json();
-          setProjects([data]); // Coloca el proyecto en un array para mapearlo
-          setNewState(data.estado); // Inicializa el estado del formulario con el estado actual
-          setNewEndDate(data.fecha_fin_estimada); // Inicializa la fecha final con la fecha actual
+          if (response.ok) {
+            setProjects([data]); // Coloca el proyecto en un array para mapearlo
+            setNewState(data.estado); // Inicializa el estado del formulario con el estado actual
+            setNewEndDate(data.fecha_fin_estimada); // Inicializa la fecha final con la fecha actual
+          } else {
+            console.error("Error al obtener el proyecto");
+          }
         } catch (error) {
           console.error("Error al obtener los detalles del proyecto:", error);
         }
-      }
-    };
+      };
 
-    fetchProjects();
-  }, [id]); // Ejecuta el efecto cuando cambia el 'id'
+      fetchProjects();
+    }
+  }, [id]); // Ejecuta el efecto solo cuando cambien 'id'
 
   const handleEditClick = () => {
     setIsEditing(!isEditing); // Alterna el estado de edición
@@ -52,8 +77,6 @@ function VerDetalles() {
       estado: newState,
       fecha_fin_real: formattedEndDate, // Usa la fecha formateada
     };
-
-    console.log("Datos que se enviarán al servidor:", projectData);
 
     try {
       const response = await fetch(`/api/control_gerente/actualizarProyecto`, {
@@ -127,12 +150,14 @@ function VerDetalles() {
                   <p>
                     <strong>Descripción:</strong> {project.descripcion}
                   </p>
-                  <button
-                    onClick={handleEditClick}
-                    className={styles.editButton}
-                  >
-                    {isEditing ? "Cancelar" : "Editar"}
-                  </button>
+                  {project.estado !== "Finalizado" && (
+                    <button
+                      onClick={handleEditClick}
+                      className={styles.editButton}
+                    >
+                      {isEditing ? "Cancelar" : "Editar"}
+                    </button>
+                  )}
                 </div>
               </li>
             ))
@@ -140,6 +165,7 @@ function VerDetalles() {
             <p>No hay información disponible</p>
           )}
         </ul>
+        <Card tareas={tareas} />
 
         {isEditing && (
           <form onSubmit={handleSubmit} className={styles.editForm}>
@@ -158,7 +184,6 @@ function VerDetalles() {
               </select>
             </label>
 
-            {/* Mostrar el campo de fecha solo si el nuevo estado es "Finalizado" */}
             {newState === "Finalizado" && (
               <label>
                 Fecha Fin:

@@ -1,0 +1,65 @@
+.cardContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cardTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.taskTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0070f3;
+}
+
+.taskInfo {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.taskComment {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #888;
+  font-style: italic;
+}
+
+.taskInfo p {
+  margin: 0;
+}
+
+.deleteButton {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.deleteButton:hover {
+  background-color: #c0392b;
+}
