@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation"; // Obtener parámetros de bú
 import Navbar from "@/app/ui/navbar/pages";
 import styles from "./verDetalles.module.css"; // Archivo CSS como módulo
 
-function verDetalles() {
+function VerDetalles() {
   const [projects, setProjects] = useState([]); // Para manejar proyectos
   const searchParams = useSearchParams(); // Obtener los parámetros de la URL
   const id = searchParams.get("id"); // Obtener el ID de la URL
@@ -44,17 +44,20 @@ function verDetalles() {
                     {project.nombre_proyecto}
                   </h3>
                   <p>
-                    <strong>Fecha de Creación:</strong> {project.fecha_creacion}
+                    <strong>Fecha de Creación:</strong>{" "}
+                    {new Date(project.fecha_creacion).toLocaleDateString(
+                      "es-ES"
+                    )}
                   </p>
                   <p>
-                    <strong>Fecha de Inicio:</strong> {project.fecha_inicio}
+                    <strong>Fecha de Inicio:</strong>{" "}
+                    {new Date(project.fecha_inicio).toLocaleDateString("es-ES")}
                   </p>
                   <p>
                     <strong>Fecha Fin Estimada:</strong>{" "}
-                    {project.fecha_fin_estimada}
-                  </p>
-                  <p>
-                    <strong>Fecha de Creacion:</strong> {project.fecha_creacion}
+                    {new Date(project.fecha_fin_estimada).toLocaleDateString(
+                      "es-ES"
+                    )}
                   </p>
                   <p>
                     <strong>Usuario asignado:</strong>{" "}
@@ -64,13 +67,13 @@ function verDetalles() {
                     <strong>Estado:</strong> {project.estado}
                   </p>
                   <p>
-                    <strong>Descripcion:</strong> {project.descripcion}
+                    <strong>Descripción:</strong> {project.descripcion}
                   </p>
                 </div>
               </li>
             ))
           ) : (
-            <p>No hay informacion disponible</p>
+            <p>No hay información disponible</p>
           )}
         </ul>
       </div>
@@ -78,4 +81,4 @@ function verDetalles() {
   );
 }
 
-export default verDetalles;
+export default VerDetalles;
