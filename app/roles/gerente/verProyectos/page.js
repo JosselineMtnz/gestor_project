@@ -3,26 +3,36 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import Navbar from "@/app/ui/navbar/pages";
-import styles from "./verProyectos.module.css"; // Importa el archivo CSS como módulo
+import styles from "./verProyectos.module.css";
 
 function VerProyectos() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const response = await fetch("/api/control_gerente/verProyectos");
-      const data = await response.json();
-      setProjects(data);
+      const name = localStorage.getItem("name");
+
+      try {
+        const response = await fetch(
+          `/api/control_gerente/verProyectos?usuario=${name}`
+        );
+
+        if (!response.ok) {
+          throw new Error("Error al obtener los proyectos");
+        }
+
+        const data = await response.json();
+        setProjects(data);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+        // Puedes mostrar un mensaje de error al usuario si lo deseas
+      }
     };
     fetchProjects();
   }, []);
 
-  const handleViewDetails = (projectId) => {
-    console.log(`Ver detalles del proyecto ID: ${projectId}`);
-  };
-
-  const handleDelete = (projectId) => {
-    console.log(`Eliminar proyecto ID: ${projectId}`);
+  const handleViewDetails = (id) => {
+    window.location.href = `verDetalles?id=${id}`;
   };
 
   const columns = [
@@ -30,12 +40,13 @@ function VerProyectos() {
     { name: "Nombre", selector: (row) => row.nombre_proyecto, sortable: true },
     {
       name: "Fecha de Inicio",
-      selector: (row) => row.fecha_inicio,
+      selector: (row) => new Date(row.fecha_inicio).toLocaleDateString("es-ES"), // Formato legible
       sortable: true,
     },
     {
       name: "Fecha Fin Estimada",
-      selector: (row) => row.fecha_fin_estimada,
+      selector: (row) =>
+        new Date(row.fecha_fin_estimada).toLocaleDateString("es-ES"), // Formato legible
       sortable: true,
     },
     { name: "Estado", selector: (row) => row.estado, sortable: true },
@@ -49,17 +60,8 @@ function VerProyectos() {
           >
             Ver Detalles
           </button>
-          <button
-            className={styles.deleteButton}
-            onClick={() => handleDelete(row.id)}
-          >
-            Eliminar
-          </button>
         </div>
       ),
-      ignoreRowClick: true,
-      allowOverflow: true,
-      button: true,
     },
   ];
 

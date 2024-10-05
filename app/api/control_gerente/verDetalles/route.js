@@ -2,17 +2,26 @@ import conexion from "../../../conexion/db";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {
-  const { searchParams } = new URL(req.url);
-  const usuario = searchParams.get("usuario"); // Obtener el ID del usuario de la URL
-
   try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json(
+        { message: "El parámetro 'id' es obligatorio." },
+        { status: 400 }
+      );
+    }
+
+    //console.log("Project ID utilizado para la consulta:", id);
+
     const [rows] = await conexion.query(
-      "SELECT * FROM proyectos WHERE usuario_asignado = ?",
-      [usuario] // Usar el ID del usuario para la consulta
+      "SELECT * FROM proyectos WHERE usuario_asignado = ? AND id = ?",
+      [id]
     );
 
     if (rows.length > 0) {
-      return NextResponse.json(rows, { status: 200 });
+      return NextResponse.json(rows[0], { status: 200 }); // Retorna solo el primer proyecto
     } else {
       return NextResponse.json(
         { message: "No se encontraron proyectos en la base de datos" },

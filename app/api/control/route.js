@@ -9,18 +9,20 @@ export async function POST(req) {
       user,
     ]);
 
-    //console.log("Query results:", rows);
+    console.log("Query results:", rows);
 
     if (rows.length > 0) {
       const storedPassword = rows[0].password;
       const role = rows[0].role;
+      const name = rows[0].name; // Asegúrate de que 'name' es un atributo en tu tabla 'users'
 
+      console.log("Nombre de la persona logueada: ", name);
       console.log("Contraseña de la BD:", storedPassword);
       console.log("Contraseña proporcionada por el usuario:", password);
 
       if (password === storedPassword) {
         return NextResponse.json(
-          { message: "Inicio de sesión exitoso.", role },
+          { message: "Inicio de sesión exitoso.", role, name }, // Añadir el nombre aquí
           { status: 200 }
         );
       } else {

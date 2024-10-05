@@ -11,8 +11,12 @@ export default function Login() {
   const router = useRouter();
 
   useEffect(() => {
+    // Comprobar si ya hay un usuario logueado
     const storedUserRole = localStorage.getItem("userRole");
-  }, []);
+    if (storedUserRole) {
+      router.push(`../roles/${storedUserRole}/verProyectos`);
+    }
+  }, [router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,9 +32,17 @@ export default function Login() {
 
       if (response.ok) {
         const data = await response.json();
-        //console.log(data);
         localStorage.setItem("userRole", data.role);
-        router.push(`../roles/${data.role}/verProyectos`);
+        localStorage.setItem("name", data.name); // Guardar el nombre aquí
+
+        console.log(data);
+
+        // Redirigir según el rol
+        if (data.role === "usuario") {
+          router.push(`../roles/usuario/verMisProyectos`);
+        } else {
+          router.push(`../roles/${data.role}/verProyectos`);
+        }
       } else {
         const data = await response.json();
         setError(data.message);
