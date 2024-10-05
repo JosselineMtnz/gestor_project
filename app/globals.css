@@ -1,6 +1,5 @@
 /* app/globals.css */
-body 
-{
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -14,4 +13,15 @@ body
 a {
   text-decoration: none;
   color: inherit;
+}
+
+#root,
+.app {
+  display: flex;
+  flex-direction: column; /* Coloca los elementos en columna */
+  min-height: 100vh; /* Asegura que el contenedor ocupe al menos el 100% de la altura de la ventana */
+}
+
+footer {
+  margin-top: auto; /* Empuja el footer hacia abajo */
 }

@@ -57,12 +57,12 @@ const Navbar = () => {
         {user && user.role === "gerente" && (
           <>
             <li>
-              <Link href="/">
-                <p>Inicio</p>
+              <Link href="crearTareas">
+                <p>Crear Tareas</p>
               </Link>
             </li>
             <li>
-              <Link href="#">
+              <Link href="verProyectos">
                 <p>Ver proyectos</p>
               </Link>
             </li>
