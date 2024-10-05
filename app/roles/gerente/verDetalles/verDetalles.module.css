@@ -1,0 +1,108 @@
+/* Contenedor principal */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Lista de proyectos */
+.projectList {
+  list-style: none;
+  padding: 0;
+}
+
+/* Elementos individuales de la lista */
+.projectItem {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover sobre cada item */
+.projectItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Detalles del proyecto */
+.projectDetails {
+  max-width: 70%;
+}
+
+.projectName {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.projectDetails p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Estilos del formulario de edición */
+.editForm {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.editForm h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.editForm label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Estilos para inputs de texto y fecha */
+.editForm input[type="text"],
+.editForm input[type="date"],
+.editForm select {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Estilos en foco */
+.editForm input[type="text"]:focus,
+.editForm input[type="date"]:focus,
+.editForm select:focus {
+  border-color: #0070f3; /* Cambia a un color que coincida con tu tema */
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 112, 243, 0.5); /* Sombra en foco */
+}
+
+/* Estilos del botón */
+.editForm button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #0070f3; /* Color de fondo del botón */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo al pasar el cursor sobre el botón */
+.editForm button:hover {
+  background-color: #005bb5; /* Color de fondo del botón al pasar el cursor */
+}

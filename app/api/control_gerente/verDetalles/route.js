@@ -16,7 +16,7 @@ export async function GET(req) {
     //console.log("Project ID utilizado para la consulta:", id);
 
     const [rows] = await conexion.query(
-      "SELECT * FROM proyectos WHERE usuario_asignado = ? AND id = ?",
+      "SELECT * FROM proyectos WHERE id = ?",
       [id]
     );
 
