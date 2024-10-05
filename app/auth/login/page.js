@@ -39,7 +39,7 @@ export default function Login() {
 
         // Redirigir según el rol
         if (data.role === "usuario") {
-          router.push(`../roles/usuario/verMisProyectos`);
+          router.push(`../roles/usuario/verMisTareas`);
         } else {
           router.push(`../roles/${data.role}/verProyectos`);
         }

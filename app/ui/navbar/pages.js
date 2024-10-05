@@ -79,8 +79,8 @@ const Navbar = () => {
         {user && user.role === "usuario" && (
           <>
             <li>
-              <Link href="verMisProyectos">
-                <p>Mis proyectos</p>
+              <Link href="verMisTareas">
+                <p>Mis Tareas</p>
               </Link>
             </li>
             <li>
