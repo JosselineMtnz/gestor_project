@@ -67,6 +67,11 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link href="crearTareas">
+                <p>Crear tarea</p>
+              </Link>
+            </li>
+            <li>
               <button onClick={handleLogout}>Cerrar sesión</button>
             </li>
           </>
@@ -74,12 +79,7 @@ const Navbar = () => {
         {user && user.role === "usuario" && (
           <>
             <li>
-              <Link href="/">
-                <p>Inicio</p>
-              </Link>
-            </li>
-            <li>
-              <Link href="#">
+              <Link href="verMisProyectos">
                 <p>Mis proyectos</p>
               </Link>
             </li>
