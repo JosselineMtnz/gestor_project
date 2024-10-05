@@ -34,21 +34,27 @@ export default function Login() {
         const data = await response.json();
         localStorage.setItem("userRole", data.role);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> rol-usuario
         localStorage.setItem("name", data.name); // Guardar el nombre aquí
 
         console.log(data);
 
         // Redirigir según el rol
         if (data.role === "usuario") {
-          router.push(`../roles/usuario/verMisProyectos`);
+          router.push(`../roles/usuario/verMisTareas`);
         } else {
           router.push(`../roles/${data.role}/verProyectos`);
+<<<<<<< HEAD
 =======
         if (data.role === "admin" || data.role === "gerente") {
           router.push(`../roles/${data.role}/verProyectos`);
         } else {
           router.push(`../roles/usuario/verMisProyectos`);
 >>>>>>> 5de718ca0b8fbcf8a3ab29d3c04a159946ac39a7
+=======
+>>>>>>> rol-usuario
         }
       } else {
         const data = await response.json();
