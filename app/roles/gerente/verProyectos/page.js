@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> rol-usuario
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -98,8 +94,3 @@ function VerProyectos() {
 }
 
 export default VerProyectos;
-<<<<<<< HEAD
-=======
->>>>>>> 5de718ca0b8fbcf8a3ab29d3c04a159946ac39a7
-=======
->>>>>>> rol-usuario
