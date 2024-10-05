@@ -132,3 +132,40 @@
   transform: translateY(0); /* Volver a su posición original al hacer clic */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra original al hacer clic */
 }
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.modalActions {
+  margin-top: 20px;
+}
+
+.saveButton {
+  background-color: green;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.cancelButton {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}

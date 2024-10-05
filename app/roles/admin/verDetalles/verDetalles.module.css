@@ -1,0 +1,49 @@
+/* Contenedor principal */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Lista de proyectos */
+.projectList {
+  list-style: none;
+  padding: 0;
+}
+
+/* Elementos individuales de la lista */
+.projectItem {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover sobre cada item */
+.projectItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Detalles del proyecto */
+.projectDetails {
+  max-width: 70%;
+}
+
+.projectName {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.projectDetails p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}

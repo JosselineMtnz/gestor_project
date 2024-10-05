@@ -6,23 +6,77 @@ import Navbar from "@/app/ui/navbar/pages";
 import styles from "./verUsuarios.module.css";
 
 function VerProyectos() {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState([]); // Datos de usuarios
+  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para abrir o cerrar el modal
+  const [selectedUser, setSelectedUser] = useState(null); // Usuario seleccionado para editar
+  const [newRole, setNewRole] = useState(""); // Rol actualizado
 
   useEffect(() => {
-    const fetchProjects = async () => {
+    const fetchUsuarios = async () => {
       const response = await fetch("/api/control_admin/verUsuarios");
       const data = await response.json();
       setProjects(data);
     };
-    fetchProjects();
+    fetchUsuarios();
   }, []);
 
-  const handleEdit = (projectId) => {
-    console.log(`Editar el Usuario con ID: ${projectId}`);
+  const handleEdit = (userId) => {
+    // Encontrar el usuario seleccionado por ID
+    const userToEdit = projects.find((user) => user.id === userId);
+    setSelectedUser(userToEdit); // Guardar el usuario seleccionado
+    setNewRole(userToEdit.role); // Inicializar el rol actual en el modal
+    setIsModalOpen(true); // Abrir el modal
   };
 
-  const handleDelete = (projectId) => {
-    console.log(`Eliminar Usuario con ID: ${projectId}`);
+  const handleDelete = async (userId) => {
+    const confirmDelete = window.confirm(
+      "¿Estás seguro de que deseas eliminar este usuario?"
+    );
+
+    if (confirmDelete) {
+      const response = await fetch("/api/control_admin/eliminarUsuario", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: userId }),
+      });
+
+      console.log("Respuesta de la eliminación:", response); // Verifica la respuesta
+
+      if (response.ok) {
+        // Si la eliminación fue exitosa, actualizar la lista de usuarios
+        setProjects((prevProjects) =>
+          prevProjects.filter((user) => user.id !== userId)
+        );
+      } else {
+        const errorData = await response.json(); // Obtener el mensaje de error
+        console.error("Error al eliminar el usuario:", errorData.message);
+      }
+    }
+  };
+
+  const handleSave = async () => {
+    // Aquí se hace la petición para actualizar el rol en la base de datos
+    const response = await fetch("/api/control_admin/editarRolUsuario", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: selectedUser.id, role: newRole }),
+    });
+
+    if (response.ok) {
+      // Si la actualización fue exitosa, actualizar el rol en la tabla
+      setProjects((prevProjects) =>
+        prevProjects.map((user) =>
+          user.id === selectedUser.id ? { ...user, role: newRole } : user
+        )
+      );
+      setIsModalOpen(false); // Cerrar el modal
+    } else {
+      console.error("Error al actualizar el rol del usuario.");
+    }
   };
 
   const columns = [
@@ -57,9 +111,6 @@ function VerProyectos() {
           </button>
         </div>
       ),
-      ignoreRowClick: true,
-      allowOverflow: true,
-      button: true,
     },
   ];
 
@@ -80,6 +131,37 @@ function VerProyectos() {
           className={styles.dataTable}
         />
       </div>
+
+      {/* Modal para editar el rol */}
+      {isModalOpen && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <h3>Editar Rol de {selectedUser.name}</h3>
+            <label>
+              Nuevo Rol:
+              <select
+                value={newRole}
+                onChange={(e) => setNewRole(e.target.value)}
+              >
+                <option value="admin">admin</option>
+                <option value="usuario">usuario</option>
+                <option value="gerente">gerente</option>
+              </select>
+            </label>
+            <div className={styles.modalActions}>
+              <button onClick={handleSave} className={styles.saveButton}>
+                Guardar
+              </button>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className={styles.cancelButton}
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

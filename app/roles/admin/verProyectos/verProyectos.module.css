@@ -132,3 +132,58 @@
   transform: translateY(0); /* Volver a su posición original al hacer clic */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra original al hacer clic */
 }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegura que el modal esté por encima de otros elementos */
+}
+
+.modalContent {
+  background-color: white; /* Fondo del modal */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del modal */
+  width: 400px; /* Ancho del modal */
+  max-width: 90%; /* Asegura que el modal no exceda el ancho de la pantalla */
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end; /* Alinea los botones a la derecha */
+  margin-top: 20px; /* Margen superior para separar del contenido */
+}
+
+.saveButton {
+  background-color: #4caf50; /* Color verde para el botón guardar */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px; /* Espacio entre botones */
+}
+
+.saveButton:hover {
+  background-color: #45a049; /* Cambio de color al pasar el mouse */
+}
+
+.cancelButton {
+  background-color: #f44336; /* Color rojo para el botón cancelar */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancelButton:hover {
+  background-color: #e53935; /* Cambio de color al pasar el mouse */
+}
