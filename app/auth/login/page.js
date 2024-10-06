@@ -36,16 +36,7 @@ export default function Login() {
         localStorage.setItem("name", data.name); // Guardar el nombre aquí
 
         console.log(data);
-
-        // Redirigir según el rol
-        if (data.role === "usuario") {
-          router.push(`../roles/usuario/verMisTareas`);
-        } else if (data.role === "admin" || data.role === "gerente") {
-          router.push(`../roles/${data.role}/verProyectos`);
-        } else {
-          // Manejo de roles no reconocidos si es necesario
-          console.error("Rol no reconocido:", data.role);
-        }
+        router.push(`../roles/${data.role}/verProyectos`);
       } else {
         const data = await response.json();
         setError(data.message);

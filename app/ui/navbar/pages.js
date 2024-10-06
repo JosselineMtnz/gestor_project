@@ -76,18 +76,6 @@ const Navbar = () => {
             </li>
           </>
         )}
-        {user && user.role === "usuario" && (
-          <>
-            <li>
-              <Link href="verMisTareas">
-                <p>Mis Tareas</p>
-              </Link>
-            </li>
-            <li>
-              <button onClick={handleLogout}>Cerrar sesión</button>
-            </li>
-          </>
-        )}
       </ul>
     </nav>
   );
