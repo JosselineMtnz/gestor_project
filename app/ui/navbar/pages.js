@@ -67,10 +67,12 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="crearTareas">
-                <p>Crear tarea</p>
-              </Link>
+              <button onClick={handleLogout}>Cerrar sesión</button>
             </li>
+          </>
+        )}
+        {user && user.role === "usuario" && (
+          <>
             <li>
               <button onClick={handleLogout}>Cerrar sesión</button>
             </li>
