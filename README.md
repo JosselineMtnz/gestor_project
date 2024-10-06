@@ -1,16 +1,14 @@
-
 # Gestor de Proyectos
 
 Este es un proyecto de gestión y asignación de tareas desarrollado con Next.js, diseñado para administrar proyectos y tareas de manera eficiente. La aplicación permite a los usuarios gestionar sus actividades diarias, asignar tareas a diferentes miembros del equipo, y hacer un seguimiento del progreso de los proyectos.
 
 Esto es un proyecto realizado para la materia Diseño y Programación de Software Multiplataforma del Grupo 01T de la Universidad Don Bosco en modalidad Educación a Distancia.
 
-
-
 ## Caracteristicas
 
 - Autenticación de Usuarios: Los usuarios pueden registrarse e iniciar sesión con roles diferenciados (Administrador, Gerente, Usuario).
 - Roles de Usuario:
+
 1-Administrador: Acceso total a la plataforma, puede gestionar usuarios, proyectos y tareas.
 
 2-Gerente: Puede gestionar proyectos y tareas dentro de su ámbito asignado.
@@ -28,24 +26,25 @@ Esto es un proyecto realizado para la materia Diseño y Programación de Softwar
 - JavaScript
 - MySQL
 
-
-
 ## Instalación
+
 1- Clona el repositorio:
+
 ```bash
   git clone https://github.com/JosselineMtnz/gestor_project.git
 ```
 
 2- Instala las dependencias:
+
 ```bash
  npm install
 ```
 
 3-Ejecuta la aplicación en modo desarrollo:
+
 ```bash
  npm run dev
 ```
-
 
 ## Autores
 
