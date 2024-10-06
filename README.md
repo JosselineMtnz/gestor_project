@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Gestor de Proyectos
 
-First, run the development server:
+Este es un proyecto de gestión y asignación de tareas desarrollado con Next.js, diseñado para administrar proyectos y tareas de manera eficiente. La aplicación permite a los usuarios gestionar sus actividades diarias, asignar tareas a diferentes miembros del equipo, y hacer un seguimiento del progreso de los proyectos.
 
+Esto es un proyecto realizado para la materia Diseño y Programación de Software Multiplataforma del Grupo 01T de la Universidad Don Bosco en modalidad Educación a Distancia.
+
+
+
+## Caracteristicas
+
+- Autenticación de Usuarios: Los usuarios pueden registrarse e iniciar sesión con roles diferenciados (Administrador, Gerente, Usuario).
+- Roles de Usuario:
+1-Administrador: Acceso total a la plataforma, puede gestionar usuarios, proyectos y tareas.
+
+2-Gerente: Puede gestionar proyectos y tareas dentro de su ámbito asignado.
+
+3-Usuario: Visualiza y gestiona solo las tareas asignadas.
+
+- Gestión de Proyectos: Crear, editar y eliminar proyectos. Cada proyecto puede tener múltiples tareas asociadas.
+- Asignación de Tareas: Asigna tareas a usuarios con descripciones detalladas, fechas de entrega, prioridades y estados (pendiente, en progreso, completada).
+- API REST: Soporte completo para operaciones CRUD a través de una API REST, facilitando la integración con bases de datos.
+- Interfaz de Usuario: Interfaz amigable y responsiva con CSS personalizado.
+
+## Tecnologías Utilizadas
+
+- Next.js
+- JavaScript
+- MySQL
+
+
+
+## Instalación
+1- Clona el repositorio:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/JosselineMtnz/gestor_project.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2- Instala las dependencias:
+```bash
+ npm install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+3-Ejecuta la aplicación en modo desarrollo:
+```bash
+ npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Autores
 
-To learn more about Next.js, take a look at the following resources:
+- Josseline Esmeralda Martínez Hernández MH180422 [@JosselineMtnz](https://github.com/JosselineMtnz)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Denilson Emmanuel Chávez Cruz [@DeccXD](https://github.com/DeccXD)
