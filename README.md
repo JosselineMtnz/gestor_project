@@ -50,4 +50,4 @@ Esto es un proyecto realizado para la materia Diseño y Programación de Softwar
 
 - Josseline Esmeralda Martínez Hernández MH180422 [@JosselineMtnz](https://github.com/JosselineMtnz)
 
-- Denilson Emmanuel Chávez Cruz [@DeccXD](https://github.com/DeccXD)
+- Denilson Emmanuel Chávez Cruz CC161302 [@DeccXD](https://github.com/DeccXD)
