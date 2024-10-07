@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./login.module.css";
 
@@ -9,14 +9,6 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
-
-  useEffect(() => {
-    // Comprobar si ya hay un usuario logueado
-    const storedUserRole = localStorage.getItem("userRole");
-    if (storedUserRole) {
-      router.push(`../roles/${storedUserRole}/verProyectos`);
-    }
-  }, [router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,14 +24,20 @@ export default function Login() {
 
       if (response.ok) {
         const data = await response.json();
-        localStorage.setItem("userRole", data.role);
-        localStorage.setItem("name", data.name); // Guardar el nombre aquí
+        // Solo guardar en localStorage si el inicio de sesión es exitoso
+        if (data.role) {
+          localStorage.setItem("userRole", data.role);
+          localStorage.setItem("name", data.name); // Guardar el nombre aquí
 
-        console.log(data);
-        router.push(`../roles/${data.role}/verProyectos`);
+          console.log(data);
+          // Redirigir a la página correspondiente solo después de que se haya iniciado sesión correctamente
+          router.push(`../roles/${data.role}/verProyectos`);
+        } else {
+          setError("El rol no está disponible.");
+        }
       } else {
         const data = await response.json();
-        setError(data.message);
+        setError(data.message || "Credenciales inválidas.");
       }
     } catch (error) {
       setError("Error de servidor. Intente de nuevo.");
@@ -91,3 +89,4 @@ export default function Login() {
     </div>
   );
 }
+

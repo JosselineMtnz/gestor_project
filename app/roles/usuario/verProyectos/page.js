@@ -6,7 +6,6 @@ function UsuarioPage() {
     <div>
       <Navbar></Navbar>
       <h1>Bienvenido Usuario</h1>
-      <Footer></Footer>
     </div>
   );
 }

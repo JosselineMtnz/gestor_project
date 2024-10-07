@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // Importa useRouter
+import { useRouter } from "next/navigation"; 
 import Navbar from "@/app/ui/navbar/pages";
 import styles from "./crearTareas.module.css";
 
 function CrearTarea() {
   const [nombreTarea, setNombreTarea] = useState("");
   const [nombreProyecto, setNombreProyecto] = useState("");
-  const [idProyecto, setIdProyecto] = useState(""); // Inicializar el idProyecto aquí
+  const [idProyecto, setIdProyecto] = useState("");
   const [fechaInicio, setFechaInicio] = useState("");
   const [comentario, setComentario] = useState("");
   const [usuarios, setUsuarios] = useState([]);
@@ -19,13 +19,10 @@ function CrearTarea() {
   const [showProjectSuggestions, setShowProjectSuggestions] = useState(false);
   const router = useRouter();
 
-  // Obtener la lista de gerentes desde la API
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
-        const response = await fetch(
-          "/api/control_gerente/buscarUsuarioAsignado"
-        );
+        const response = await fetch("/api/control_gerente/buscarUsuarioAsignado");
         const data = await response.json();
         if (response.ok) {
           setUsuarios(data);
@@ -36,18 +33,14 @@ function CrearTarea() {
         console.error("Error al obtener usuarios:", error);
       }
     };
-
     fetchUsuarios();
   }, []);
 
-  // Obtener la lista de proyectos desde la API
   useEffect(() => {
     const fetchProyectos = async () => {
       try {
         const response = await fetch("/api/control_gerente/buscarProyecto");
         const data = await response.json();
-
-        console.log(data);
         if (response.ok) {
           setProyectos(data);
         } else {
@@ -57,7 +50,6 @@ function CrearTarea() {
         console.error("Error al obtener proyectos:", error);
       }
     };
-
     fetchProyectos();
   }, []);
 
@@ -73,7 +65,6 @@ function CrearTarea() {
       idProyecto,
     };
 
-    console.log(tarea);
     try {
       const response = await fetch("/api/control_gerente/crearTarea", {
         method: "POST",
@@ -84,9 +75,8 @@ function CrearTarea() {
       });
 
       const data = await response.json();
-      console.log(data);
       if (response.ok) {
-        alert("Tarea creado exitosamente!");
+        alert("Tarea creada exitosamente!");
         router.push("/roles/gerente/verProyectos");
       } else {
         alert(data.message || "No se pudo crear la tarea.");
@@ -97,15 +87,12 @@ function CrearTarea() {
     }
   };
 
-  // Filtrar los gerentes y proyectos
   const filteredUsuarios = usuarios.filter((usuario) =>
     usuario.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const filteredProyectos = proyectos.filter((proyecto) =>
-    proyecto.nombre_proyecto
-      .toLowerCase()
-      .includes(nombreProyecto.toLowerCase())
+    proyecto.nombre_proyecto.toLowerCase().includes(nombreProyecto.toLowerCase())
   );
 
   const handleUsuarioSelect = (usuario) => {
@@ -114,25 +101,20 @@ function CrearTarea() {
     setShowSuggestions(false);
   };
 
-  // Manejar la selección de un proyecto
   const handleProyectoSelect = (proyecto) => {
     setNombreProyecto(proyecto.nombre_proyecto);
-    setIdProyecto(proyecto.id); // Establece el id del proyecto seleccionado
+    setIdProyecto(proyecto.id);
     setShowProjectSuggestions(false);
   };
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
-    setShowSuggestions(
-      e.target.value.length > 0 && filteredUsuarios.length > 0
-    );
+    setShowSuggestions(e.target.value.length > 0 && filteredUsuarios.length > 0);
   };
 
   const handleProyectoChange = (e) => {
     setNombreProyecto(e.target.value);
-    setShowProjectSuggestions(
-      e.target.value.length > 0 && filteredProyectos.length > 0
-    );
+    setShowProjectSuggestions(e.target.value.length > 0 && filteredProyectos.length > 0);
   };
 
   return (
@@ -150,12 +132,7 @@ function CrearTarea() {
             onChange={handleProyectoChange}
             required
           />
-          <input
-            type="text"
-            value={idProyecto}
-            readOnly
-            style={{ display: "none" }}
-          />
+          <input type="text" value={idProyecto} readOnly style={{ display: "none" }} />
           {showProjectSuggestions && (
             <ul className={styles.suggestionsList}>
               {filteredProyectos.map((proyecto) => (
